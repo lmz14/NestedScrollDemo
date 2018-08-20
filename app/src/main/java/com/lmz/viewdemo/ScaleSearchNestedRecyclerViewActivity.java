@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
  * @author lmz14
  * @date 2018.8.20
  */
-public class ScaleSearchBar2Activity extends AppCompatActivity {
+public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
 
     public static final int STATUS_EXPANDED = 1;
     public static final int STATUS_COLLAPSED = 2;
@@ -140,7 +140,6 @@ public class ScaleSearchBar2Activity extends AppCompatActivity {
                     rlSearchBarCoverLayout.setVisibility(View.VISIBLE);
                     rlSearchBar.setVisibility(View.GONE);
                     int offset = maxHeadTopHeight - h;//当前滑出屏幕的距离
-                    Log.e("test111","maxHeadTopHeight:"+maxHeadTopHeight+",h:"+h);
                     float rate = (1.0f * offset)/maxOffset;//maxOffset需要滑出屏幕的最大距离
                     //背景图片透明度
                     ivSearchBarCoverBg.setAlpha(1 * rate);

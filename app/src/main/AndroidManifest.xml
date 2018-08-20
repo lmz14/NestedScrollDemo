@@ -24,7 +24,7 @@
             android:theme="@style/NoActionBarAndNoTitle" />
 
         <activity
-            android:name=".ScaleSearchBar2Activity"
+            android:name=".ScaleSearchNestedRecyclerViewActivity"
             android:theme="@style/NoActionBarAndNoTitle" />
 
         <activity android:name=".NestedViewPagerDemoActivity"/>

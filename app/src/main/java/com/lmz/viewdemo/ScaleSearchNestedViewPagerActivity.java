@@ -175,7 +175,6 @@ public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implem
                         rlSearchBarCoverLayout.setVisibility(View.VISIBLE);
                         rlSearchBar.setVisibility(View.GONE);
                         int offset = maxHeadTopHeight - h;//当前滑出屏幕的距离
-                        Log.e("test111","maxHeadTopHeight:"+maxHeadTopHeight+",h:"+h);
                         float rate = (1.0f * offset)/maxOffset;//maxOffset需要滑出屏幕的最大距离
                         //背景图片透明度
                         ivSearchBarCoverBg.setAlpha(1 * rate);
