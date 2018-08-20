@@ -11,8 +11,11 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.lmz.viewdemo.iface.ScrollableContainer;
-
-public class MyNestedScrollView2 extends NestedScrollView{
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
+public class MyNestedScrollView extends NestedScrollView{
     public static final int STATUS_EXPANDED = 1;
     public static final int STATUS_COLLAPSED = 2;
     private int mInterceptX,mInterceptY;
@@ -21,15 +24,15 @@ public class MyNestedScrollView2 extends NestedScrollView{
     private int offsetY;
     private int headStatus;
 
-    public MyNestedScrollView2(@NonNull Context context) {
+    public MyNestedScrollView(@NonNull Context context) {
         super(context);
     }
 
-    public MyNestedScrollView2(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public MyNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyNestedScrollView2(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MyNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -42,8 +45,8 @@ public class MyNestedScrollView2 extends NestedScrollView{
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         if(maxOffSetY == 0 && getChildCount()>0){
             View child = getChildAt(0);
-            if(child!=null && child instanceof NestedVerticalLinearLayout2){
-                maxOffSetY = ((NestedVerticalLinearLayout2) child).getMaxOffsetY();
+            if(child!=null && child instanceof NestedVerticalLinearLayout){
+                maxOffSetY = ((NestedVerticalLinearLayout) child).getMaxOffsetY();
             }
         }
     }

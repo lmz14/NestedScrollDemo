@@ -16,7 +16,10 @@ import com.andview.refreshview.XRefreshView;
 import com.lmz.viewdemo.R;
 
 import java.util.NoSuchElementException;
-
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
 public class StickyLayout extends LinearLayout {
     private static final String TAG = "StickyLayout";
     private static final boolean DEBUG = true;

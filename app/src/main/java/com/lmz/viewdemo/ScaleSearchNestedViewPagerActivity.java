@@ -27,7 +27,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
 public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implements AppBarLayoutObserved {
 
     public static final int STATUS_EXPANDED = 1;

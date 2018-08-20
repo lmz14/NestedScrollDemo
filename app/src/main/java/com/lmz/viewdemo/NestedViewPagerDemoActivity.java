@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.lmz.viewdemo.adapter.NestedScrollingFragmentAdapter;
 import com.lmz.viewdemo.fragment.NestedScrollingDemoFragment;
-import com.lmz.viewdemo.view.MyNestedScrollView2;
-import com.lmz.viewdemo.view.NestedVerticalLinearLayout2;
+import com.lmz.viewdemo.view.MyNestedScrollView;
+import com.lmz.viewdemo.view.NestedVerticalLinearLayout;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import java.util.ArrayList;
@@ -21,14 +21,18 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
 public class NestedViewPagerDemoActivity extends AppCompatActivity{
 
     @BindView(R.id.viewpager)
     ViewPager viewpager;
     @BindView(R.id.NestedScrollingView)
-    NestedVerticalLinearLayout2 NestedScrollingView;
+    NestedVerticalLinearLayout NestedScrollingView;
     @BindView(R.id.nestedScrollView)
-    MyNestedScrollView2 nestedScrollView;
+    MyNestedScrollView nestedScrollView;
     @BindView(R.id.smartTabLayout)
     SmartTabLayout smartTabLayout;
 

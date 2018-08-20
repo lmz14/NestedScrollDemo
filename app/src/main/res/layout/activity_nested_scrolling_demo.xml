@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lmz.viewdemo.view.MyNestedScrollView2 xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lmz.viewdemo.view.MyNestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nestedScrollView"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".NestedViewPagerDemoActivity"
     android:fillViewport="true">
-    <com.lmz.viewdemo.view.NestedVerticalLinearLayout2
+    <com.lmz.viewdemo.view.NestedVerticalLinearLayout
         android:id="@+id/NestedScrollingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,5 +39,5 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </com.lmz.viewdemo.view.NestedVerticalLinearLayout2>
-</com.lmz.viewdemo.view.MyNestedScrollView2>
+    </com.lmz.viewdemo.view.NestedVerticalLinearLayout>
+</com.lmz.viewdemo.view.MyNestedScrollView>

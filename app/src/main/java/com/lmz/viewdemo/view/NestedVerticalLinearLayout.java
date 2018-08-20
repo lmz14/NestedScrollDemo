@@ -19,23 +19,23 @@ import android.widget.LinearLayout;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
-public class NestedVerticalLinearLayout2 extends LinearLayout implements NestedScrollingChild,NestedScrollingParent {
+public class NestedVerticalLinearLayout extends LinearLayout implements NestedScrollingChild,NestedScrollingParent {
 
     private NestedScrollingChildHelper mChildHelper;
     private NestedScrollingParentHelper mParentHelper;
     private int maxOffsetY;
 
-    public NestedVerticalLinearLayout2(Context context) {
+    public NestedVerticalLinearLayout(Context context) {
         super(context);
         init();
     }
 
-    public NestedVerticalLinearLayout2(Context context, @Nullable AttributeSet attrs) {
+    public NestedVerticalLinearLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public NestedVerticalLinearLayout2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public NestedVerticalLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

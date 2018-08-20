@@ -17,6 +17,10 @@ import android.widget.LinearLayout;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
 public class VerticalLinearLayout extends LinearLayout{
 
     private int maxOffsetY;

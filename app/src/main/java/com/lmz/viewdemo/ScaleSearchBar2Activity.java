@@ -21,7 +21,10 @@ import com.lmz.viewdemo.view.XRefreshLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
 public class ScaleSearchBar2Activity extends AppCompatActivity {
 
     public static final int STATUS_EXPANDED = 1;

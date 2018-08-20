@@ -15,7 +15,10 @@ import com.andview.refreshview.XRefreshView;
 import com.lmz.viewdemo.Utils.Util;
 import com.lmz.viewdemo.iface.AppBarLayoutObserved;
 import com.lmz.viewdemo.iface.ScrollableContainer;
-
+/**
+ * @author lmz14
+ * @date 2018.8.20
+ */
 public class MyCoordinatorLayout extends CoordinatorLayout{
     private final String TAG = "MyCoordinatorLayout";
     private AppBarLayoutObserved observed;
