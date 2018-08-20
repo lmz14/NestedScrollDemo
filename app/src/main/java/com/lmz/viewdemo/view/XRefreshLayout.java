@@ -21,11 +21,6 @@ import com.lmz.viewdemo.R;
 
 import java.util.Calendar;
 
-/**
- * TODO:
- * Created by chenyanmo on 2016/4/6.
- * master@chenyanmo.com
- */
 public class XRefreshLayout extends LinearLayout implements IHeaderCallBack {
     private ViewGroup mContent;
     private ImageView mArrowImageView;

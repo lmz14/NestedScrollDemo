@@ -118,7 +118,7 @@ public class MyCoordinatorLayout extends CoordinatorLayout{
             //AppbarLayout折叠或下滑时，consumed[1]=0,并且触摸点不在Banner上
             nsvMaxOffsetY = getNestedScrollViewMaxOffset();
             if(nsvMaxOffsetY>0 && nestedScrollView !=null){
-                //MyNestedScrollView存在最大滑出屏幕的偏移量时，需要对dy消耗进行处理
+                //NestedScrollView存在最大滑出屏幕的偏移量时，需要对dy消耗进行处理
                 if(dy>0){
                     //上滑
                     if(nsvMaxOffsetY == nestedScrollView.getScrollY()){
