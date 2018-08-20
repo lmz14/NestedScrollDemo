@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:roundProgress="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_xlistview_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|bottom">
+
+
+        <RelativeLayout
+            android:id="@+id/header_blank"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:src="@color/transparent" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/xlistview_refrush_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/xlistview_header_content"
+            android:layout_marginBottom="-63.00dp"
+            android:src="@drawable/refresh_word" />
+
+        <LinearLayout
+            android:id="@+id/xlistview_header_content"
+            android:layout_width="match_parent"
+            android:layout_height="90.00dp"
+            android:layout_below="@+id/header_blank"
+            android:gravity="center_horizontal|bottom"
+            android:orientation="vertical"
+            android:paddingBottom="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <com.lmz.viewdemo.view.CircleProgress
+                    android:id="@+id/circle_progress"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/refresh_circular"
+                    android:visibility="visible"
+                    roundProgress:fill="false"
+                    roundProgress:inside_interval="5"
+                    roundProgress:max_progress="100"
+                    roundProgress:paint_color="@android:color/transparent"
+                    roundProgress:paint_width="3" />
+
+                <ImageView
+                    android:id="@+id/xlistview_header_arrow"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/refresh_money" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:id="@+id/xlistview_header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/xlistview_header_hint_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/xlistview_header_hint_normal"
+                    android:textColor="@color/pull_to_refresh_header_text"
+                    android:textSize="11sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!--android:layout_marginTop="3dp"-->
+
+                    <TextView
+                        android:id="@+id/xlistview_header_last_time_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/xlistview_header_last_time"
+                        android:textColor="@color/pull_to_refresh_header_text"
+                        android:textSize="8sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/xlistview_header_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/pull_to_refresh_header_text"
+                        android:textSize="8sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:roundProgress="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/ll_xlistview_header"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="bottom"-->
+    <!--android:orientation="vertical">-->
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center_horizontal|bottom">-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/header_blank"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="105dp">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/transparent"-->
+                <!--android:src="@color/transparent" />-->
+
+        <!--</RelativeLayout>-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/xlistview_refrush_img"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_above="@+id/xlistview_header_content"-->
+            <!--android:layout_marginBottom="-63.00dp"-->
+            <!--android:src="@drawable/refresh_word" />-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/xlistview_header_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="75.00dp"-->
+            <!--android:layout_below="@+id/header_blank"-->
+            <!--android:gravity="center_horizontal|bottom"-->
+            <!--android:orientation="vertical"-->
+            <!--android:padding="10dp">-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center">-->
+
+                <!--<com.lmz.viewdemo.view.CircleProgress-->
+                    <!--android:id="@+id/circle_progress"-->
+                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:background="@drawable/refresh_circular"-->
+                    <!--android:visibility="visible"-->
+                    <!--roundProgress:fill="false"-->
+                    <!--roundProgress:inside_interval="5"-->
+                    <!--roundProgress:max_progress="100"-->
+                    <!--roundProgress:paint_color="@android:color/transparent"-->
+                    <!--roundProgress:paint_width="3" />-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/xlistview_header_arrow"-->
+                    <!--android:layout_width="20dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:background="@drawable/refresh_money" />-->
+            <!--</RelativeLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/xlistview_header_text"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:gravity="center"-->
+                <!--android:orientation="vertical"-->
+                <!--android:visibility="gone">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/xlistview_header_hint_textview"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/xlistview_header_hint_normal"-->
+                    <!--android:textColor="@color/pull_to_refresh_header_text"-->
+                    <!--android:textSize="11sp"-->
+                    <!--android:visibility="gone" />-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--&lt;!&ndash;android:layout_marginTop="3dp"&ndash;&gt;-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/xlistview_header_last_time_textview"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/xlistview_header_last_time"-->
+                        <!--android:textColor="@color/pull_to_refresh_header_text"-->
+                        <!--android:textSize="8sp"-->
+                        <!--android:visibility="gone" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/xlistview_header_time"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/pull_to_refresh_header_text"-->
+                        <!--android:textSize="8sp"-->
+                        <!--android:visibility="gone" />-->
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+    <!--</RelativeLayout>-->
+<!--</LinearLayout>-->

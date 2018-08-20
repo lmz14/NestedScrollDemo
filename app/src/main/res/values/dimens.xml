@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<dimen name="maxHeadTopHeight">110dp</dimen>-->
+    <!--<dimen name="minHeadTopHeight">50dp</dimen>-->
+    <dimen name="searchBarHiight">50dp</dimen>
+    <dimen name="searchBarScale">20dp</dimen>
+    <dimen name="textSize">14sp</dimen>
+    <dimen name="textScale">1sp</dimen>
+    <dimen name="headHeight">217dp</dimen>
+    <dimen name="maxMarginBottom">30dp</dimen>
+    <dimen name="marginBottomScale">20dp</dimen>
+    <dimen name="marginLeft">12dp</dimen>
+
+    <dimen name="maxHeadTopHeight">180dp</dimen>
+    <dimen name="minHeadTopHeight">75dp</dimen>
+    <dimen name="maxLimit">105dp</dimen>
+    <dimen name="minLimit">50dp</dimen>
+
+    <!--多层嵌套滑动使用-->
+    <dimen name="head_container_height">207dp</dimen>
+    <dimen name="search_container_max_height">127dp</dimen>
+    <dimen name="search_bar_max_height">50dp</dimen>
+    <dimen name="search_btn_max_font_size">18sp</dimen>
+    <dimen name="search_content_max_font_size">14sp</dimen>
+    <dimen name="search_bar_max_margin_bottom">30dp</dimen>
+    <dimen name="search_bar_margin_left">15dp</dimen>
+    <!--top search-->
+    <dimen name="search_container_min_height">50dp</dimen>
+    <dimen name="search_bar_min_height">34dp</dimen>
+    <dimen name="search_btn_min_font_size">14sp</dimen>
+    <dimen name="search_content_min_font_size">13sp</dimen>
+    <dimen name="search_bar_min_margin_bottom">8dp</dimen>
+    <!--search bar start scale height-->
+    <dimen name="search_bar_start_scale">90dp</dimen>
+    <!--head search end alpha height-->
+    <dimen name="head_bg_end_alpha">80dp</dimen>
+    <!--search home pull refresh largest height-->
+    <dimen name="search_home_pull_refresh_largest_height">90dp</dimen>
+</resources>

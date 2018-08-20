@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ScaleSearchBar2Activity">
+    <com.andview.refreshview.XRefreshView
+        android:id="@+id/refreshview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbarlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <RelativeLayout
+                        android:id="@+id/sticky_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="217dp"
+                        android:background="@drawable/image_home_top">
+                        <RelativeLayout
+                            android:id="@+id/rlSearchBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/searchBarHiight"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginBottom="@dimen/maxMarginBottom"
+                            android:layout_alignParentBottom="true"
+                            android:background="@drawable/search_bar_bg">
+                            <TextView
+                                android:id="@+id/tvSearchBtn"
+                                android:layout_width="67dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/search_btn_bg"
+                                android:text="搜索"
+                                android:textColor="#CD3811"
+                                android:textSize="@dimen/textSize"
+                                android:gravity="center"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_toLeftOf="@+id/tvSearchBtn"
+                                android:paddingLeft="20dp"
+                                android:gravity="center_vertical"
+                                android:textColor="#A8A8A7"
+                                android:textSize="@dimen/textSize"
+                                android:text="搜淘宝商品标题，领券/拿返还"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/minHeadTopHeight"
+                        app:layout_collapseMode="pin">
+                    </android.support.v7.widget.Toolbar>
+                </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        </android.support.design.widget.CoordinatorLayout>
+    </com.andview.refreshview.XRefreshView>
+
+    <RelativeLayout
+        android:id="@+id/rlSearchBarCoverLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/maxHeadTopHeight"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivHeadCoverBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/image_top_bg"/>
+
+        <RelativeLayout
+            android:id="@+id/rlSearchBarCover"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/searchBarHiight"
+            android:layout_marginLeft="@dimen/marginLeft"
+            android:layout_marginRight="@dimen/marginLeft"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/maxMarginBottom"
+            android:background="@drawable/search_bar_bg">
+
+            <TextView
+                android:id="@+id/tvSearchBtnCover"
+                android:layout_width="67dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/search_btn_bg"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="#CD3811"
+                android:textSize="@dimen/textSize" />
+
+            <TextView
+                android:id="@+id/tvSearchContentCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@+id/tvSearchBtnCover"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="搜淘宝商品标题，领券/拿返还"
+                android:textColor="#A8A8A7"
+                android:textSize="@dimen/textSize" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
