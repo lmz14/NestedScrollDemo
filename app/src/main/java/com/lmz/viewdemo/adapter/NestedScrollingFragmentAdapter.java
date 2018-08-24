@@ -10,23 +10,16 @@ import com.lmz.viewdemo.fragment.NestedScrollingDemoFragment;
 
 import java.util.List;
 
-public class NestedScrollingFragmentAdapter extends FragmentStatePagerAdapter{
-
-    private List<NestedScrollingDemoFragment> fragments;
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
+public class NestedScrollingFragmentAdapter extends BaseFragmentAdapter<NestedScrollingDemoFragment>{
 
     public NestedScrollingFragmentAdapter(FragmentManager fm,List<NestedScrollingDemoFragment> fragments) {
-        super(fm);
+        super(fm,fragments);
         this.fragments = fragments;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return fragments!=null && position < fragments.size()?fragments.get(position):null;
-    }
-
-    @Override
-    public int getCount() {
-        return fragments!=null?fragments.size():0;
     }
 
     @Nullable

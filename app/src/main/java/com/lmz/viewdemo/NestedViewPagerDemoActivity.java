@@ -22,8 +22,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * @author lmz14
- * @date 2018.8.20
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
  */
 public class NestedViewPagerDemoActivity extends AppCompatActivity{
 
@@ -44,7 +45,7 @@ public class NestedViewPagerDemoActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nested_scrolling_demo);
+        setContentView(R.layout.activity_nested_scrolling);
         ButterKnife.bind(this);
         initData();
         initView();

@@ -21,7 +21,11 @@ import com.lmz.viewdemo.adapter.ListAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
 public class SearchNestedScrollingDemoFragment extends Fragment implements ScrollableContainer {
 
     @BindView(R.id.recyclerview)
@@ -29,6 +33,7 @@ public class SearchNestedScrollingDemoFragment extends Fragment implements Scrol
     private ScaleSearchNestedViewPagerActivity mActivity;
     private ListAdapter adapter;
     private int index;
+    private GridLayoutManager gridLayoutManager;
 
     @Override
     public void onAttach(Context context) {
@@ -65,7 +70,6 @@ public class SearchNestedScrollingDemoFragment extends Fragment implements Scrol
 
     }
 
-    private GridLayoutManager gridLayoutManager;
     private void initView() {
         gridLayoutManager = new GridLayoutManager(mActivity,1);
         recyclerview.setLayoutManager(gridLayoutManager);
@@ -82,14 +86,4 @@ public class SearchNestedScrollingDemoFragment extends Fragment implements Scrol
         return recyclerview;
     }
 
-    public boolean isTop(){
-        if (gridLayoutManager!=null && gridLayoutManager instanceof LinearLayoutManager) {
-            int firstVisibleItemPosition = ((LinearLayoutManager) gridLayoutManager).findFirstVisibleItemPosition();
-            View childAt = recyclerview.getChildAt(0);
-            if (childAt == null || (firstVisibleItemPosition <= 1 && childAt.getTop() == 0)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

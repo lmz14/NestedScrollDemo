@@ -16,31 +16,61 @@ import com.lmz.viewdemo.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-/**
- * Created by linmeizhen on 2018/7/23.
- */
 public class CircleProgress extends View {
-    private static final int DEFAULT_MAX_VALUE = 100; // 默认进度条最大值
+    /**
+     * 默认进度条最大值
+     */
+    private static final int DEFAULT_MAX_VALUE = 100;
 
-    private static final int DEFAULT_PAINT_WIDTH = 10; // 默认画笔宽度
+    /**
+     * 默认画笔宽度
+     */
+    private static final int DEFAULT_PAINT_WIDTH = 10;
 
-    private static final int DEFAULT_PAINT_COLOR = 0xffffcc00; // 默认画笔颜色
+    /**
+     * 默认画笔颜色
+     */
+    private static final int DEFAULT_PAINT_COLOR = 0xffffcc00;
 
-    private static final boolean DEFAULT_FILL_MODE = true; // 默认填充模式
+    /**
+     * 默认填充模式
+     */
+    private static final boolean DEFAULT_FILL_MODE = true;
 
-    private static final int DEFAULT_INSIDE_VALUE = 0; // 默认缩进距离
+    /**
+     * 默认缩进距离
+     */
+    private static final int DEFAULT_INSIDE_VALUE = 0;
 
-    private CircleAttribute mCircleAttribute; // 圆形进度条基本属性
+    /**
+     * 圆形进度条基本属性
+     */
+    private CircleAttribute mCircleAttribute;
 
-    private int mMaxProgress; // 进度条最大值
+    /**
+     * 进度条最大值
+     */
+    private int mMaxProgress;
 
-    private int mMainCurProgress; // 主进度条当前值
+    /**
+     * 主进度条当前值
+     */
+    private int mMainCurProgress;
 
-    private int mSubCurProgress; // 子进度条当前值
+    /**
+     * 子进度条当前值
+     */
+    private int mSubCurProgress;
 
-    private CartoonEngine mCartoonEngine; // 动画引擎
+    /**
+     * 动画引擎
+     */
+    private CartoonEngine mCartoonEngine;
 
-    private Drawable mBackgroundPicture; // 背景图
+    /**
+     * 背景图
+     */
+    private Drawable mBackgroundPicture;
 
     public CircleProgress(Context context) {
         super(context);
@@ -53,26 +83,33 @@ public class CircleProgress extends View {
         defaultParam();
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CircleProgress);
 
-        mMaxProgress = array.getInteger(R.styleable.CircleProgress_max_progress, DEFAULT_MAX_VALUE); // 获取进度条最大值
+        //获取进度条最大值
+        mMaxProgress = array.getInteger(R.styleable.CircleProgress_max_progress, DEFAULT_MAX_VALUE);
 
-        boolean bFill = array.getBoolean(R.styleable.CircleProgress_fill, DEFAULT_FILL_MODE); // 获取填充模式
-        int paintWidth = array.getInt(R.styleable.CircleProgress_paint_width, DEFAULT_PAINT_WIDTH); // 获取画笔宽度
+        // 获取填充模式
+        boolean bFill = array.getBoolean(R.styleable.CircleProgress_fill, DEFAULT_FILL_MODE);
+
+        // 获取画笔宽度
+        int paintWidth = array.getInt(R.styleable.CircleProgress_paint_width, DEFAULT_PAINT_WIDTH);
         mCircleAttribute.setFill(bFill);
         if (bFill == false) {
             mCircleAttribute.setPaintWidth(paintWidth);
         }
 
-        int paintColor = array.getColor(R.styleable.CircleProgress_paint_color, DEFAULT_PAINT_COLOR); // 获取画笔颜色
+        // 获取画笔颜色
+        int paintColor = array.getColor(R.styleable.CircleProgress_paint_color, DEFAULT_PAINT_COLOR);
 
         mCircleAttribute.setPaintColor(paintColor);
 
-        mCircleAttribute.mSidePaintInterval = array.getInt(R.styleable.CircleProgress_inside_interval, DEFAULT_INSIDE_VALUE);// 圆环缩进距离
+        // 圆环缩进距离
+        mCircleAttribute.mSidePaintInterval = array.getInt(R.styleable.CircleProgress_inside_interval, DEFAULT_INSIDE_VALUE);
 
-        array.recycle(); // 一定要调用，否则会有问题
+        // 一定要调用，否则会有问题
+        array.recycle();
 
     }
 
-    /*
+    /**
      * 默认参数
      */
     private void defaultParam() {
@@ -87,8 +124,8 @@ public class CircleProgress extends View {
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) { // 设置视图大小
-        // super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // 设置视图大小
 
         int width = MeasureSpec.getSize(widthMeasureSpec);
 
@@ -101,6 +138,7 @@ public class CircleProgress extends View {
 
     }
 
+    @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
@@ -108,11 +146,12 @@ public class CircleProgress extends View {
 
     }
 
+    @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (mBackgroundPicture == null) // 没背景图的话就绘制底色
-        {
+        // 没背景图的话就绘制底色
+        if (mBackgroundPicture == null) {
             canvas.drawArc(mCircleAttribute.mRoundOval, 0, 360, mCircleAttribute.mBRoundPaintsFill, mCircleAttribute.mBottomPaint);
         }
 
@@ -128,7 +167,7 @@ public class CircleProgress extends View {
 
     }
 
-    /*
+    /**
      * 设置主进度值
      */
     public synchronized void setMainProgress(int progress) {
@@ -148,7 +187,7 @@ public class CircleProgress extends View {
         return mMainCurProgress;
     }
 
-    /*
+    /**
      * 设置子进度值
      */
     public synchronized void setSubProgress(int progress) {
@@ -168,7 +207,7 @@ public class CircleProgress extends View {
         return mSubCurProgress;
     }
 
-    /*
+    /**
      * 开启动画
      */
     public void startCartoom(int time) {
@@ -176,7 +215,7 @@ public class CircleProgress extends View {
 
     }
 
-    /*
+    /**
      * 结束动画
      */
     public void stopCartoom() {
@@ -185,23 +224,50 @@ public class CircleProgress extends View {
 
     class CircleAttribute {
 
-        public RectF mRoundOval; // 圆形所在矩形区域
+        /**
+         * 圆形所在矩形区域
+         */
+        public RectF mRoundOval;
 
-        public boolean mBRoundPaintsFill; // 是否填充以填充模式绘制圆形
+        /**
+         * 是否填充以填充模式绘制圆形
+         */
+        public boolean mBRoundPaintsFill;
 
-        public int mSidePaintInterval; // 圆形向里缩进的距离
+        /**
+         * 圆形向里缩进的距离
+         */
+        public int mSidePaintInterval;
 
-        public int mPaintWidth; // 圆形画笔宽度（填充模式下无视）
+        /**
+         * 圆形画笔宽度（填充模式下无视）
+         */
+        public int mPaintWidth;
 
-        public int mPaintColor; // 画笔颜色 （即主进度条画笔颜色，子进度条画笔颜色为其半透明值）
+        /**
+         * 画笔颜色 （即主进度条画笔颜色，子进度条画笔颜色为其半透明值）
+         */
+        public int mPaintColor;
 
-        public int mDrawPos; // 绘制圆形的起点（默认为-90度即12点钟方向）
+        /**
+         * 绘制圆形的起点（默认为-90度即12点钟方向）
+         */
+        public int mDrawPos;
 
-        public Paint mMainPaints; // 主进度条画笔
+        /**
+         * 主进度条画笔
+         */
+        public Paint mMainPaints;
 
-        public Paint mSubPaint; // 子进度条画笔
+        /**
+         * 子进度条画笔
+         */
+        public Paint mSubPaint;
 
-        public Paint mBottomPaint; // 无背景图时绘制所用画笔
+        /**
+         * 无背景图时绘制所用画笔
+         */
+        public Paint mBottomPaint;
 
         public CircleAttribute() {
             mRoundOval = new RectF();
@@ -222,7 +288,6 @@ public class CircleProgress extends View {
             mSubPaint.setStyle(Paint.Style.FILL);
             mSubPaint.setStrokeWidth(mPaintWidth);
             mSubPaint.setColor(mPaintColor);
-//            mSubPaint.setColor(getResources().getColor(R.color.common_main_color));
 
             mBottomPaint = new Paint();
             mBottomPaint.setAntiAlias(true);
@@ -232,7 +297,7 @@ public class CircleProgress extends View {
 
         }
 
-        /*
+        /**
          * 设置画笔宽度
          */
         public void setPaintWidth(int width) {
@@ -241,7 +306,7 @@ public class CircleProgress extends View {
             mBottomPaint.setStrokeWidth(width);
         }
 
-        /*
+        /**
          * 设置画笔颜色
          */
         public void setPaintColor(int color) {
@@ -250,7 +315,7 @@ public class CircleProgress extends View {
             mSubPaint.setColor(getResources().getColor(R.color.common_main_color));
         }
 
-        /*
+        /**
          * 设置填充模式
          */
         public void setFill(boolean fill) {
@@ -266,7 +331,7 @@ public class CircleProgress extends View {
             }
         }
 
-        /*
+        /**
          * 自动修正
          */
         public void autoFix(int w, int h) {
@@ -290,17 +355,35 @@ public class CircleProgress extends View {
 
         public Handler mHandler;
 
-        public boolean mBCartoon; // 是否正在作动画
+        /**
+         * 是否正在作动画
+         */
+        public boolean mBCartoon;
 
-        public Timer mTimer; // 用于作动画的TIMER
+        /**
+         * 用于作动画的TIMER
+         */
+        public Timer mTimer;
 
-        public MyTimerTask mTimerTask; // 动画任务
+        /**
+         * 动画任务
+         */
+        public MyTimerTask mTimerTask;
 
-        public int mSaveMax; // 在作动画时会临时改变MAX值，该变量用于保存值以便恢复
+        /**
+         * 在作动画时会临时改变MAX值，该变量用于保存值以便恢复
+         */
+        public int mSaveMax;
 
-        public int mTimerInterval; // 定时器触发间隔时间(ms)
+        /**
+         * 定时器触发间隔时间(ms)
+         */
+        public int mTimerInterval;
 
-        public float mCurFloatProcess; // 作动画时当前进度值
+        /**
+         * 作动画时当前进度值
+         */
+        public float mCurFloatProcess;
 
         public CartoonEngine() {
             mHandler = new Handler() {

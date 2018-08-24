@@ -18,7 +18,11 @@ import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
 public class NestedVerticalLinearLayout extends LinearLayout implements NestedScrollingChild,NestedScrollingParent {
 
     private NestedScrollingChildHelper mChildHelper;
@@ -60,7 +64,8 @@ public class NestedVerticalLinearLayout extends LinearLayout implements NestedSc
                 offset = offset + child.getMeasuredHeight();
             }
         }
-        this.maxOffsetY = offset;//可滑出屏幕的最大距离
+        //可滑出屏幕的最大距离
+        this.maxOffsetY = offset;
         super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(specSize + offset,MeasureSpec.EXACTLY));
     }
 

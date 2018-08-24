@@ -9,7 +9,11 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
 public class MainActivity extends AppCompatActivity{
 
     @BindView(R.id.btnScaleSearchBar)

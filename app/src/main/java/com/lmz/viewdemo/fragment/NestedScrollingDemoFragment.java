@@ -21,6 +21,11 @@ import com.lmz.viewdemo.adapter.ListAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * @author linmeizhen
+ * @date 2018/8/24
+ * @description
+ */
 public class NestedScrollingDemoFragment extends Fragment implements ScrollableContainer {
 
     @BindView(R.id.recyclerview)
@@ -28,6 +33,7 @@ public class NestedScrollingDemoFragment extends Fragment implements ScrollableC
     private NestedViewPagerDemoActivity mActivity;
     private ListAdapter adapter;
     private int index;
+    private GridLayoutManager gridLayoutManager;
 
     @Override
     public void onAttach(Context context) {
@@ -64,7 +70,6 @@ public class NestedScrollingDemoFragment extends Fragment implements ScrollableC
 
     }
 
-    private GridLayoutManager gridLayoutManager;
     private void initView() {
         gridLayoutManager = new GridLayoutManager(mActivity,1);
         recyclerview.setLayoutManager(gridLayoutManager);

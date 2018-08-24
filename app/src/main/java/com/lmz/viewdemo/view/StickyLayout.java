@@ -11,8 +11,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.andview.refreshview.XRefreshView;
 import com.lmz.viewdemo.R;
 
 import java.util.NoSuchElementException;
@@ -23,37 +21,58 @@ import java.util.NoSuchElementException;
 public class StickyLayout extends LinearLayout {
     private static final String TAG = "StickyLayout";
     private static final boolean DEBUG = true;
-    //用来判断listview是否滑动到顶端
+
+    /**
+     * 用来判断listview是否滑动到顶端
+     */
     public interface OnGiveUpTouchEventListener {
-        public boolean giveUpTouchEvent(MotionEvent event);
+        boolean giveUpTouchEvent(MotionEvent event);
     }
 
-    private View mHeader;//上半部分布局
-    private View mContent;//下半部分布局
+    /**
+     * 上半部分布局
+     */
+    private View mHeader;
+
+    /**
+     * 下半部分布局
+     */
+    private View mContent;
     private OnGiveUpTouchEventListener mGiveUpTouchEventListener;
 
-    // header的高度  单位：px
+    /**
+     * header的高度  单位：px
+     */
     private int mOriginalHeaderHeight;
     private int minHeadTopHeight;
     private int maxHeadTopHeight;
     private int mHeaderHeight;
-    //滑动方向
+    /**
+     * 滑动方向
+     */
     private int mStatus = STATUS_EXPANDED;
     public static final int STATUS_EXPANDED = 1;
     public static final int STATUS_COLLAPSED = 2;
-//    public static final int STATUS_ALL_COLLAPSED = 3;
-    //滚动的像素值
+    /**
+     * 滚动的像素值
+     */
     private int mTouchSlop;
 
-    // 分别记录上次滑动的坐标
+    /**
+     * 分别记录上次滑动的坐标
+     */
     private int mLastX = 0;
     private int mLastY = 0;
 
-    // 分别记录上次滑动的坐标(onInterceptTouchEvent)
+    /**
+     * 分别记录上次滑动的坐标(onInterceptTouchEvent)
+     */
     private int mLastXIntercept = 0;
     private int mLastYIntercept = 0;
 
-    // 用来控制滑动角度，仅当角度a满足如下条件才进行滑动：tan a = deltaX / deltaY > 2
+    /**
+     * 用来控制滑动角度，仅当角度a满足如下条件才进行滑动：tan a = deltaX / deltaY > 2
+     */
     private static final int TAN = 2;
 
     private boolean mIsSticky = true;
@@ -65,7 +84,6 @@ public class StickyLayout extends LinearLayout {
     private View rlSearchBar;
     private int textSize;
     private int textScale;
-    private int verticalScrollFlag;
 
     public StickyLayout(Context context) {
         super(context);
@@ -124,39 +142,6 @@ public class StickyLayout extends LinearLayout {
         mGiveUpTouchEventListener = l;
     }
 
-//    private int mLastYDispatch;
-//    @Override
-//    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        if(xRefreshView!=null){
-//            int y = (int) ev.getY();
-//            switch (ev.getAction()){
-//                case MotionEvent.ACTION_DOWN:
-//                    mLastYDispatch = y;
-//                    xRefreshView.disallowInterceptTouchEvent(true);
-//                    break;
-//                case MotionEvent.ACTION_MOVE:
-//                    int deltaY = y - mLastYDispatch;
-//                    if (mGiveUpTouchEventListener != null && mGiveUpTouchEventListener.giveUpTouchEvent(ev)
-//                            && deltaY >= mTouchSlop && mStatus == STATUS_ALL_COLLAPSED){
-//                        //全展开状态 && listview滑动到顶部并向下滑动
-//                        xRefreshView.disallowInterceptTouchEvent(false);
-//                    }else{
-//                        xRefreshView.disallowInterceptTouchEvent(false);
-//                    }
-//                    break;
-//                case MotionEvent.ACTION_UP:
-//                    mLastYDispatch = 0;
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//        return super.dispatchTouchEvent(ev);
-//    }
-
-    /**
-     * 片段
-     */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
         int intercepted = 0;
@@ -208,9 +193,8 @@ public class StickyLayout extends LinearLayout {
         }
         return intercepted != 0 && mIsSticky;
     }
-    /**
-     * 片段
-     */
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (!mIsSticky) {
@@ -234,14 +218,8 @@ public class StickyLayout extends LinearLayout {
             }
             case MotionEvent.ACTION_UP: {
                 // 这里做了下判断，当松开手的时候，会自动向两边滑动，具体向哪边滑，要看当前所处的位置
-                int destHeight = 0;
-//                if (mHeaderHeight <= mOriginalHeaderHeight * 0.5) {
-//                    destHeight = 0;
-//                    mStatus = STATUS_COLLAPSED;
-//                } else {
-//                    destHeight = mOriginalHeaderHeight;
-//                    mStatus = STATUS_EXPANDED;
-//                }
+                int destHeight;
+
                 if (mHeaderHeight <= minHeadTopHeight) {
                     destHeight = 0;
                     mStatus = STATUS_COLLAPSED;
@@ -249,7 +227,6 @@ public class StickyLayout extends LinearLayout {
                     int deltaY = y - mLastY;
                     mHeaderHeight += deltaY;
                     destHeight = mHeaderHeight;
-//                    mStatus = STATUS_EXPANDED;
                 }
                 // 慢慢滑向终点
                 this.smoothSetHeaderHeight(mHeaderHeight, destHeight, 500);
@@ -375,7 +352,6 @@ public class StickyLayout extends LinearLayout {
                    int mTextSize = (int) (textSize - textScale * rate);
                    tvSearchContentCover.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTextSize);
                    tvSearchBtnCover.setTextSize(TypedValue.COMPLEX_UNIT_PX,mTextSize);
-                    Log.e("test11","rate:"+rate+",offset:"+offset+",maxOffset:"+maxOffset);
                 }
             }else{
                 rlSearchBar.setVisibility(View.VISIBLE);
@@ -415,11 +391,6 @@ public class StickyLayout extends LinearLayout {
      */
     public boolean isAllExpanded(){
         return mHeaderHeight == mOriginalHeaderHeight;
-    }
-
-    private XRefreshView xRefreshView;
-    public void setXRefreshView(XRefreshView xRefreshView){
-        this.xRefreshView = xRefreshView;
     }
 
 }

@@ -33,7 +33,10 @@ public class XRefreshLayout extends LinearLayout implements IHeaderCallBack {
     private Context mContext;
     private Animation circleAnim;
     private boolean isRefreshing = false;
-    private ImageView mRefrushImageView;//下拉刷新的图片控件
+    /**
+     * 下拉刷新的图片控件
+     */
+    private ImageView mRefrushImageView;
 
     public XRefreshLayout(Context context) {
         super(context);
@@ -101,7 +104,6 @@ public class XRefreshLayout extends LinearLayout implements IHeaderCallBack {
             refreshTimeText = Utils.format(refreshTimeText, minutes / 60 / 24);
         }
         mHeaderTimeTextView.setText(refreshTimeText);
-//        mHeaderTimeTextView.setVisibility(View.VISIBLE);
     }
 
     /**
@@ -121,17 +123,6 @@ public class XRefreshLayout extends LinearLayout implements IHeaderCallBack {
     public void onStateNormal() {
         mProgressBar.clearAnimation();
         isRefreshing = false;
-//        RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams) mArrowImageView.getLayoutParams();
-//        params1.width = DensityUtil.dip2px(mContext, 10);
-//        params1.height = DensityUtil.dip2px(mContext, 10);
-//        mArrowImageView.setLayoutParams(params1);
-//        mArrowImageView.setBackgroundResource(R.drawable.cgf_update_renminbi_bg);
-//        mArrowImageView.setVisibility(View.VISIBLE);
-//        mArrowImageView.startAnimation(mRotateDownAnim);
-//        mHintTextView.setVisibility(View.VISIBLE);
-//        mHintTextView.setText(R.string.xlistview_header_hint_normal);
-//        mProgressBar.clearAnimation();
-//        mProgressBar.setVisibility(View.VISIBLE);
 
         getHeaderRefrushImg();
     }
@@ -140,42 +131,18 @@ public class XRefreshLayout extends LinearLayout implements IHeaderCallBack {
     public void onStateReady() {
         isRefreshing = false;
         mProgressBar.setBackgroundResource(R.drawable.refresh_circular);
-//        mArrowImageView.setVisibility(View.VISIBLE);
-//        mArrowImageView.clearAnimation();
-//        mArrowImageView.startAnimation(mRotateUpAnim);
-//        mHintTextView.setText(R.string.xlistview_header_hint_ready);
-//        mProgressBar.setVisibility(View.VISIBLE);
-
-//        mProgressBar.setBackgroundResource(R.color.transparent);
     }
 
     @Override
     public void onStateRefreshing() {
         isRefreshing = true;
-
-//        mArrowImageView.clearAnimation();
-//        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mArrowImageView.getLayoutParams();
-//        params.width = DensityUtil.dip2px(mContext ,8);
-//        params.height = DensityUtil.dip2px(mContext ,8);
-//        mArrowImageView.setLayoutParams(params);
-//        mArrowImageView.setBackgroundResource(R.drawable.cgf_update_renminbi_bg);
-//        mArrowImageView.setVisibility(View.VISIBLE);
-//        mHintTextView.setText(R.string.xlistview_header_hint_loading);
-//        mProgressBar.setSubProgress(0);
         mProgressBar.startAnimation(circleAnim);
-//        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onStateFinish() {
 
         isRefreshing = false;
-//        mProgressBar.setBackgroundResource(R.color.transparent);
-//        mArrowImageView.setVisibility(View.GONE);
-//        mProgressBar.clearAnimation();
-//        mProgressBar.setVisibility(View.GONE);
-//        mHintTextView.setVisibility(View.GONE);
-//        mHeaderTimeTextView.setVisibility(View.GONE);
     }
 
     @Override
@@ -183,7 +150,6 @@ public class XRefreshLayout extends LinearLayout implements IHeaderCallBack {
 
         if (!isRefreshing) {
             if (mProgressBar.getAnimation() == null) {
-//                mProgressBar.setSubProgress((int) (offset * 100));
                 mProgressBar.setRotation((int) ((-1) * offsetY));
             }
         }

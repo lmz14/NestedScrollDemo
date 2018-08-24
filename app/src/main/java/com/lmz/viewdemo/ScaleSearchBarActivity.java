@@ -17,9 +17,11 @@ import com.lmz.viewdemo.view.XRefreshLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 /**
- * @author lmz14
- * @date 2018.8.20
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
  */
 public class ScaleSearchBarActivity extends AppCompatActivity {
 
@@ -66,22 +68,10 @@ public class ScaleSearchBarActivity extends AppCompatActivity {
         stickyLayout.setOnGiveUpTouchEventListener(new StickyLayout.OnGiveUpTouchEventListener() {
             @Override
             public boolean giveUpTouchEvent(MotionEvent event) {
-//                if(recyclerview!=null){
-//                    RecyclerView.LayoutManager layoutManager = recyclerview.getLayoutManager();
-//                    if (layoutManager instanceof LinearLayoutManager) {
-//                        int firstVisibleItemPosition = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
-//                        if(firstVisibleItemPosition == 0){
-//                            View child = recyclerview.getChildAt(0);
-//                            if(child!=null && child.getTop()>=0){
-//                                return true;
-//                            }
-//                        }
-//                    }
-//                }
                 return isRecyclerTop();
             }
         });
-        stickyLayout.setXRefreshView(refreshLayout);
+
         refreshLayout.setXRefreshViewListener(new XRefreshView.SimpleXRefreshListener(){
             @Override
             public void onRefresh() {

@@ -17,6 +17,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
 public class ListAdapter extends RecyclerView.Adapter{
 
     private List<String> listData;

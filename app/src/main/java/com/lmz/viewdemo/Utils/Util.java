@@ -5,13 +5,22 @@ import android.graphics.RectF;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
 public class Util {
     public static int getDevHeight(Context context){
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return metrics.heightPixels;
     }
 
-    //获取状态栏的高度
+    /**
+     * 获取状态栏的高度
+     * @param context
+     * @return
+     */
     public static int getStatusBarHeight(Context context) {
         int result = 0;
         int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");

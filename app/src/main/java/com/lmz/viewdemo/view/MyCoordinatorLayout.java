@@ -15,9 +15,11 @@ import com.andview.refreshview.XRefreshView;
 import com.lmz.viewdemo.Utils.Util;
 import com.lmz.viewdemo.iface.AppBarLayoutObserved;
 import com.lmz.viewdemo.iface.ScrollableContainer;
+
 /**
- * @author lmz14
- * @date 2018.8.20
+ * @author linmeizhen
+ * @date 2018/8/220
+ * @description
  */
 public class MyCoordinatorLayout extends CoordinatorLayout{
     private final String TAG = "MyCoordinatorLayout";
@@ -114,9 +116,8 @@ public class MyCoordinatorLayout extends CoordinatorLayout{
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed, int type) {
         Log.e(TAG,"target:"+target);
-//        Log.e(TAG,"super before dy:"+dy);
-        super.onNestedPreScroll(target, dx, dy, consumed, type);//必须放在前面调用，后面对父容器消耗的dy进行处理，来解决与子元素的滑动冲突
-//        Log.e(TAG,"super after dy:"+dy+",dx:"+dx+",consumed[1]:"+consumed[1]);
+        //必须放在前面调用，后面对父容器消耗的dy进行处理，来解决与子元素的滑动冲突
+        super.onNestedPreScroll(target, dx, dy, consumed, type);
         if(consumed[1] == 0 && !isTouchPointInBannerView){
             //AppbarLayout折叠或下滑时，consumed[1]=0,并且触摸点不在Banner上
             nsvMaxOffsetY = getNestedScrollViewMaxOffset();
@@ -166,7 +167,11 @@ public class MyCoordinatorLayout extends CoordinatorLayout{
         }
     }
 
-    private int nsvMaxOffsetY;//允许NestedScrollView划出屏幕的最大距离
+    /**
+     * 允许NestedScrollView划出屏幕的最大距离
+     */
+    private int nsvMaxOffsetY;
+
     private int getNestedScrollViewMaxOffset(){
         if(nestedScrollView !=null && nestedScrollView.getChildCount()>0 && nsvMaxOffsetY == 0){
             View child = nestedScrollView.getChildAt(0);
@@ -211,6 +216,7 @@ public class MyCoordinatorLayout extends CoordinatorLayout{
     }
 
     private LinearLayout bannerView;
+
     private LinearLayout getBannerView(){
         if(bannerView == null && nestedScrollView!=null && nestedScrollView.getChildCount()>0){
             View child = nestedScrollView.getChildAt(0);

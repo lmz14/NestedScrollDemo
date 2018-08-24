@@ -27,9 +27,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 /**
- * @author lmz14
- * @date 2018.8.20
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
  */
 public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implements AppBarLayoutObserved {
 
@@ -38,7 +40,6 @@ public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implem
 
     @BindView(R.id.appbarlayout)
     AppBarLayout appbarlayout;
-
     @BindView(R.id.rlSearchBarCover)
     RelativeLayout rlSearchBarCover;
     @BindView(R.id.rlSearchBar)
@@ -51,7 +52,6 @@ public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implem
     RelativeLayout rlSearchBarCoverLayout;
     @BindView(R.id.ivHeadCoverBg)
     ImageView ivSearchBarCoverBg;
-
     @BindView(R.id.refreshview)
     XRefreshView refreshview;
     @BindView(R.id.nestedScrollView)
@@ -69,7 +69,11 @@ public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implem
     private int searchBarHeight,textSize;
     private int searchBarScale,textScale,marginBottomScale;
     private int maxOffset;
-    private int mStatus = STATUS_EXPANDED;//默认展开状态
+
+    /**
+     * 默认展开状态
+     */
+    private int mStatus = STATUS_EXPANDED;
 
     private List<SearchNestedScrollingDemoFragment> fragments;
     private SearchNestedScrollingFragmentAdapter fragmentAdapter;
@@ -160,7 +164,9 @@ public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implem
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 //verticalOffset 向上滑动得到的值是负的，初始值为0 就是展开状态
-                int h = headHeight + verticalOffset ;//剩下未滑出屏幕的高度
+
+                //剩下未滑出屏幕的高度
+                int h = headHeight + verticalOffset ;
                 if(verticalOffset == 0){
                     //展开状态
                     mStatus = STATUS_EXPANDED;
@@ -174,8 +180,10 @@ public class ScaleSearchNestedViewPagerActivity extends AppCompatActivity implem
                     if(h<=maxHeadTopHeight){
                         rlSearchBarCoverLayout.setVisibility(View.VISIBLE);
                         rlSearchBar.setVisibility(View.GONE);
-                        int offset = maxHeadTopHeight - h;//当前滑出屏幕的距离
-                        float rate = (1.0f * offset)/maxOffset;//maxOffset需要滑出屏幕的最大距离
+                        //当前滑出屏幕的距离
+                        int offset = maxHeadTopHeight - h;
+                        //maxOffset需要滑出屏幕的最大距离
+                        float rate = (1.0f * offset)/maxOffset;
                         //背景图片透明度
                         ivSearchBarCoverBg.setAlpha(1 * rate);
                         //搜索布局容器高度缩放

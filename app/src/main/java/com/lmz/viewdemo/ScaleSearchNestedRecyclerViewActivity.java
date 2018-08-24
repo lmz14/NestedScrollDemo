@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,9 +20,11 @@ import com.lmz.viewdemo.view.XRefreshLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 /**
- * @author lmz14
- * @date 2018.8.20
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
  */
 public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
 
@@ -56,11 +57,14 @@ public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
     private int searchBarHeight,textSize;
     private int searchBarScale,textScale,marginBottomScale;
     private int maxOffset;
-    private int mStatus = STATUS_EXPANDED;//默认展开状态
+    /**
+     * 默认展开状态
+     */
+    private int mStatus = STATUS_EXPANDED;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scale_search_bar2);
+        setContentView(R.layout.activity_search_nested_recyclerview);
         ButterKnife.bind(this);
         initView();
         initData();
@@ -71,17 +75,17 @@ public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
         xRefreshLayout = new XRefreshLayout(this);
         refreshview.setCustomHeaderView(xRefreshLayout);
         refreshview.setPinnedContent(true);
+        refreshview.setIsFixHeaderView(true, (int) this.getResources().getDimension(R.dimen.search_home_pull_refresh_largest_height));
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
+        recyclerview.setLayoutManager(gridLayoutManager);
+        adapter = new ListAdapter(this);
+        recyclerview.setAdapter(adapter);
+
         mTouchSlop = ViewConfiguration.get(this).getScaledTouchSlop();
     }
 
     private void initData(){
-        refreshview.setIsFixHeaderView(true, (int) this.getResources().getDimension(R.dimen.search_home_pull_refresh_largest_height));
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,1);
-        recyclerview.setLayoutManager(gridLayoutManager);
-//        recyclerview.setNestedScrollingEnabled(false);
-
-        adapter = new ListAdapter(this);
-        recyclerview.setAdapter(adapter);
         headHeight = (int) this.getResources().getDimension(R.dimen.headHeight);
         minHeadTopHeight = (int) this.getResources().getDimension(R.dimen.minHeadTopHeight);
         maxHeadTopHeight = (int) this.getResources().getDimension(R.dimen.maxHeadTopHeight);
@@ -126,7 +130,8 @@ public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 //verticalOffset 向上滑动得到的值是负的，初始值为0 就是展开状态
-                int h = headHeight + verticalOffset ;//剩下未滑出屏幕的高度
+                //剩下未滑出屏幕的高度
+                int h = headHeight + verticalOffset ;
                 if(verticalOffset == 0){
                     //展开状态
                     mStatus = STATUS_EXPANDED;
@@ -139,8 +144,10 @@ public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
                 if(h<=maxHeadTopHeight){
                     rlSearchBarCoverLayout.setVisibility(View.VISIBLE);
                     rlSearchBar.setVisibility(View.GONE);
-                    int offset = maxHeadTopHeight - h;//当前滑出屏幕的距离
-                    float rate = (1.0f * offset)/maxOffset;//maxOffset需要滑出屏幕的最大距离
+                    //当前滑出屏幕的距离
+                    int offset = maxHeadTopHeight - h;
+                    //maxOffset需要滑出屏幕的最大距离
+                    float rate = (1.0f * offset)/maxOffset;
                     //背景图片透明度
                     ivSearchBarCoverBg.setAlpha(1 * rate);
                     //搜索布局容器高度缩放
@@ -228,7 +235,6 @@ public class ScaleSearchNestedRecyclerViewActivity extends AppCompatActivity {
         //展开 && recyclerView列表数据置顶 && 向下滑动时，可下来刷新
         //若正在刷新时，上滑，下拉刷新控件需要消耗事件，不往下传递事件
         boolean isCanPtr = isDragDown && mStatus==STATUS_EXPANDED && isRecyclerTop();
-//        Log.e("test00","isRefreshing:"+isRefreshing);
         refreshview.disallowInterceptTouchEvent(!isCanPtr);
     }
 

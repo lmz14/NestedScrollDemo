@@ -11,23 +11,16 @@ import com.lmz.viewdemo.fragment.SearchNestedScrollingDemoFragment;
 
 import java.util.List;
 
-public class SearchNestedScrollingFragmentAdapter extends FragmentStatePagerAdapter{
+/**
+ * @author linmeizhen
+ * @date 2018/8/20
+ * @description
+ */
+public class SearchNestedScrollingFragmentAdapter extends BaseFragmentAdapter<SearchNestedScrollingDemoFragment>{
 
-    private List<SearchNestedScrollingDemoFragment> fragments;
 
     public SearchNestedScrollingFragmentAdapter(FragmentManager fm, List<SearchNestedScrollingDemoFragment> fragments) {
-        super(fm);
-        this.fragments = fragments;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return fragments!=null && position < fragments.size()?fragments.get(position):null;
-    }
-
-    @Override
-    public int getCount() {
-        return fragments!=null?fragments.size():0;
+        super(fm,fragments);
     }
 
     @Nullable

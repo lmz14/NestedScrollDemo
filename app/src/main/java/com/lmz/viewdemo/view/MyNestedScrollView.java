@@ -118,7 +118,8 @@ public class MyNestedScrollView extends NestedScrollView{
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        offsetY = t;//offsetY=0 展开  offset=MaxOffset隐藏
+        //offsetY=0 展开  offset=MaxOffset隐藏
+        offsetY = t;
         if(offsetY == 0){
             headStatus = STATUS_EXPANDED;
         }else if(offsetY == maxOffSetY){
